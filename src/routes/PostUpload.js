@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { dbService, storageService } from "../fbase";
+import { v4 as uuidv4 } from "uuid";
 
 
 const PostUpload = () => {
@@ -8,11 +9,19 @@ const PostUpload = () => {
     //입력받을 내용
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [image, setImage] = useState("");
+    const [attachment, setAttachment] = useState("");
     const [category, setCategory] = useState("");
     const [aiModel, setAiModel] = useState("");
     const [prompt, setPrompt] = useState("");
     const [nonPrompt, setNonPrompt] = useState("");
+
+    var today = new Date();
+
+    var year = today.getFullYear();
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var day = ('0' + today.getDate()).slice(-2);
+
+    var dateString = year + '-' + month  + '-' + day;
 
     //이동할 경로
     const navigate = useNavigate();
@@ -21,12 +30,19 @@ const PostUpload = () => {
     const onFormSubmit = async (event) => {
         event.preventDefault();
         navigate("/");
+
+        let attachmentUrl = "";
+        if(attachment != ""){
+            const attachmentRef = storageService.ref().child(`${dateString}/${"id"}/${uuidv4()}`);
+            const response = await attachmentRef.putString(attachment, "data_url");
+            attachmentUrl = await response.ref.getDownloadURL();
+        }
         
         const postObj = {
             randomidx: Math.random(),
             title: title,
             content: content,
-            image: image,
+            attachmentUrl: attachmentUrl,
             category: category,
             aiModel: aiModel,
             prompt: prompt,
@@ -38,14 +54,12 @@ const PostUpload = () => {
     
         setTitle("");
         setContent("");
-        setImage("");
+        setAttachment("");
         setCategory("");
         setAiModel("");
         setPrompt("");
         setNonPrompt("");
     }
-
-    
     
     const onChange = (event) => {
         const{
@@ -72,10 +86,39 @@ const PostUpload = () => {
         }
     }
 
-
+    const onFileChange = (event) => {
+        const{
+            target:{files},
+        } = event;
+        const theFile = files[0];
+        const reader = new FileReader();
+        reader.onloadend = (finishedEvent) => {
+            const{
+                currentTarget:{result},
+            } = finishedEvent;
+            setAttachment(result);
+        };
+        reader.readAsDataURL(theFile);
+    }
+    const onClearAttachment = () => setAttachment(null);
 
     return(
         <form className="post-upload">
+            파일 업로드:
+            <input 
+                id="attachment"
+                className="attachment"
+                type="file"
+                accept="image/*"
+                onChange={onFileChange}
+            />
+            <br></br>
+            {attachment &&(
+                <div className="attachment">
+                    <img src={attachment} width="50px" height="50px" />
+                    <button onClick={onClearAttachment}>Clear</button>
+                </div>
+            )}
             제목:
             <input 
                 id="title"  
