@@ -80,7 +80,6 @@ const Login=({ isLoggedIn })=>{
         console.log(data.user);
         const userObj2 = {
             uid: data.user.uid,
-
         }
         console.log(data.user)
        //await dbService.collection("users").add(userObj2);
@@ -109,7 +108,13 @@ const Login=({ isLoggedIn })=>{
       const checkUser = async (event) => {
         //event.preventDefault();
         console.log("hi")
-        navigate("/auth/nickname");
+        console.log(userObj)
+        navigate("/auth/nickname",
+        {
+          replace: false,
+          state:{uid : userObj.uid}}
+        );
+        console.log(userObj2)
         //dbService.doc(`user/${userObj.uid}`).get(userObj);
         /*
         if (userObj.displayName !== newDisplayName) {

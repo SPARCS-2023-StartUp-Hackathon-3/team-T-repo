@@ -15,12 +15,12 @@ import {
   NicknamePage,
 } from "./components";
 
-export default function Router() {
+export default function Router({isLoggedIn, userObj}) {
   return (
     <BrowserRouter>
       <Routes>
         <Route path={routePaths.Main} element={<MainPage />} />
-        <Route path={routePaths.Auth} element={<AuthPage />} />
+        <Route path={routePaths.Auth} element={<AuthPage isLoggedIn={isLoggedIn} userObj={userObj}/>} />
         <Route path={routePaths.Profile} element={<ProfilePage />} />
         <Route path={routePaths.Art} element={<ArtPage />} />
         <Route

@@ -12,7 +12,7 @@ export default function AuthPage() {
       if (user) {
         setIsLoggedIn(true);
         setUserObj(user);
-        console.log(userObj)
+        //console.log(userObj)
       } else {
         setIsLoggedIn(false);
       }
