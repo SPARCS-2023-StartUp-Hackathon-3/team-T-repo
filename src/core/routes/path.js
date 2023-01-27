@@ -5,6 +5,7 @@ export const routePaths = {
   Nickname: "/nickname",
   Profile: "/profile",
   Category: "/category",
+  CategoryId: "/:categoryId",
   Create: "/create",
   Post: "/post",
   PostId: "/:postId",
