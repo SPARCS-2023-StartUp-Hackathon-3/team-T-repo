@@ -12,6 +12,7 @@ import {
   CreatePage,
   PostUploadPage,
   PostDetailPage,
+  NicknamePage,
 } from "./components";
 
 export default function Router() {
@@ -38,6 +39,10 @@ export default function Router() {
         <Route
           path={`${routePaths.Post}${routePaths.Post_Detail}${routePaths.PostId}`}
           element={<PostDetailPage />}
+        />
+        <Route
+          path={`${routePaths.Auth}${routePaths.Nickname}`}
+          element={<NicknamePage />}
         />
       </Routes>
     </BrowserRouter>

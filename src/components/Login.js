@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService, dbService, firebaseInstance } from "../fbase";
-import Nickname from "./Nickname";
+
 
 const Login=({ isLoggedIn })=>{
     const [email, setEmail] = useState("");

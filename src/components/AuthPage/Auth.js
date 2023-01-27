@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Login from "components/Login";
 import { authService } from "fbase";
-import Nickname from "./Nickname";
+import Nickname from "../Nickname";
 
 
 function Auth() {
