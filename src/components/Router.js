@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import PostUpload from "../routes/PostUpload";
 
 const AppRouter = () => {
     const [isLoggedIn, setisLoggedIn] = useState(false);
 
     return (
         <Router>
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-            </Switch>
+            <Routes>
+                <>
+                    <Route exact path="/" element={<PostUpload />} />
+                    <Route exact path="/art/post/upload" element={<PostUpload />} />
+                </>
+            </Routes>
         </Router>
     );
 };
