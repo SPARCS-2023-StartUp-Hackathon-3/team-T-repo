@@ -1,7 +1,9 @@
 
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { authService, dbService, firebaseInstance } from "../fbase";
+import Nickname from "./Nickname";
 
 const Login=({ isLoggedIn })=>{
     const [email, setEmail] = useState("");
@@ -11,6 +13,7 @@ const Login=({ isLoggedIn })=>{
     const [userUid, SetUserUid]=useState("");
     const [userObj, setUserObj] = useState(null);
     const [userObj2, setUserObj2] = useState("");
+    const navigate = useNavigate();
     useEffect(() => {
         authService.onAuthStateChanged((user) => {
           if (user) {
@@ -85,6 +88,7 @@ const Login=({ isLoggedIn })=>{
         displayName: userObj.displayName,
         uid: userObj.uid,
       });
+      checkUser();
        //await dbService.doc(`users/${userObj2.uid}`).add(userObj2);
       /* await dbService.collection("user").update({
         displayName: userObj.uid,
@@ -101,11 +105,13 @@ const Login=({ isLoggedIn })=>{
         } = event;
         setNewDisplayName(value);
       };
-    }
-      const createUser = async (event) => {
-        event.preventDefault();
-        
-        // dbService.doc(`user/${userObj.uid}`).get(userObj);
+    }*/
+      const checkUser = async (event) => {
+        //event.preventDefault();
+        console.log("hi")
+        navigate("/auth/nickname");
+        //dbService.doc(`user/${userObj.uid}`).get(userObj);
+        /*
         if (userObj.displayName !== newDisplayName) {
           const IDcheck = await dbService
             .collection("user")
@@ -133,9 +139,10 @@ const Login=({ isLoggedIn })=>{
         }
         else {
             alert("같은 닉네임입니다.");
-        }
+        }*/
+    }
 
-      }*/
+      
     return (
       <div>
         <form onSubmit={onSubmit}>

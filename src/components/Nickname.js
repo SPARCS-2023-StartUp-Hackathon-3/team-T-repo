@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from "../fbase";
 
-function  Nickname ({userObj}) {
-const onChange = async (event) => {
+function  Nickname ({userObj2}) {
+/*const onChange = async (event) => {
     //event.preventDefault();
     const {
       target: { value },
@@ -42,20 +42,20 @@ const onSubmit = async (event) => {
     }
     else {
         alert("같은 닉네임입니다.");
-    }
+    }*/
 
 return(
     <>
-    <div className="container">
-      <div className="profile_edit">
-        <form onSubmit={onSubmit}>
+    <div >
+      <div >
+        <form>
           <div>
             <input
               className="profile_text"
-              onChange={onChange}
+
               type="text"
               placeholder="닉네임"
-              value={newDisplayName}
+ 
             /> &nbsp;
             <button>
               닉네임 변경하기
