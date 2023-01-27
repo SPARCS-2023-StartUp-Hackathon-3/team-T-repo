@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { dbService, storageService } from "../fbase";
+import { dbService, storageService } from "../../fbase";
 import { v4 as uuidv4 } from "uuid";
 
 export default function PostUploadPage() {
