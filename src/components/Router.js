@@ -1,16 +1,25 @@
 import React, { useState } from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch, Routes } from "react-router-dom";
+import Auth from "./Auth";
+import Login from "./Login";
 
 const AppRouter = () => {
     const [isLoggedIn, setisLoggedIn] = useState(false);
 
     return (
         <Router>
-            <Switch>
+            <Routes>
+                <>
                 <Route exact path="/">
-                    <Home />
+                    <Home/>
                 </Route>
-            </Switch>
+                <Route exact path="/auth"
+                element={<Auth />}
+            
+              />
+                </>
+                
+            </Routes>
         </Router>
     );
 };
