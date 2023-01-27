@@ -1,24 +1,15 @@
 import './App.css';
-import AppRouter from './components/Router';
 import styled from "styled-components";
 import react, { useState } from 'react';
+import Router from "./Router";
 
 function App() {
   const [init, setInit] = useState(true);
 
   return (
-    <>
-      {init ? (
-        <AppRouter/>
-      ) : (
-        <Load>
-          {/*  <div className="ini"> */}
-          <img src="img/biglogo.png" width="50%" alt="로딩로고" style={{ position: "relative", top: "30vh", left: "25%" }} />
-          {/* <img id="rotating_img" width="80%" src="img/loading.gif"></img> */}
-          {/* </div> */}
-        </Load>
-      )}
-    </>
+    <div className="App">
+      <Router />
+    </div>
   );
 }
 
