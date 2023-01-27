@@ -1,0 +1,45 @@
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { routePaths } from "./core/routes/path";
+
+import {
+  MainPage,
+  AuthPage,
+  ArtPage,
+  CategoryPage,
+  PostPage,
+  ProfilePage,
+  CreatePage,
+  PostUploadPage,
+  PostDetailPage,
+} from "./components";
+
+export default function Router() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={routePaths.Main} element={<MainPage />} />
+        <Route path={routePaths.Auth} element={<AuthPage />} />
+        <Route path={routePaths.Profile} element={<ProfilePage />} />
+        <Route path={routePaths.Art} element={<ArtPage />} />
+        <Route
+          path={`${routePaths.Art}${routePaths.Category}`}
+          element={<CategoryPage />}
+        />
+        <Route
+          path={`${routePaths.Art}${routePaths.Create}`}
+          element={<CreatePage />}
+        />
+        <Route path={routePaths.Post} element={<PostPage />} />
+        <Route
+          path={`${routePaths.Post}${routePaths.Post_Upload}`}
+          element={<PostUploadPage />}
+        />
+        <Route
+          path={`${routePaths.Post}${routePaths.Post_Detail}${routePaths.PostId}`}
+          element={<PostDetailPage />}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+}
