@@ -17,22 +17,12 @@ export default function NicknamePage() {
   };
 
   const onSubmit =  () => {
-    if(location.state.userObj.email){
-      dbService.doc(`user/${userId}`).set({
+    dbService.doc(`user/${userId}`).set({
         nickname: nickname,
         uid: userId,
         data: Date.now(),
-      });
-    }
-    else{
-      dbService.doc(`user/${userId}`).set({
-        nickname: nickname,
-        uid: userId,
-        data: Date.now(),
-      });
-    }
+    });
     
-
     const userObj = {
       uid: userId,
     }
