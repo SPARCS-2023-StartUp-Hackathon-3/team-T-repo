@@ -15,7 +15,7 @@ export const St = {
     flex-wrap: wrap;
     `,
     PostContainer: styled.div`
-    width: 80rem;
+    width: 85.5rem;
     height: 80rem;
     margin: 1% auto 3% auto;
     background-color: white;
