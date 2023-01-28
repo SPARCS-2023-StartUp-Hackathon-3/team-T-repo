@@ -20,8 +20,11 @@ export default function AuthPage() {
     });
   }, []);
   return (
-    <>
-      {init ? <Login isLoggedIn={isLoggedIn} userObj={userObj}/> : <Nickname isLoggedIn={isLoggedIn} userObj={userObj}/> }
-    </>
+   
+<Login isLoggedIn={isLoggedIn} userObj={userObj}/>
   );
 }
+/*
+ <>
+    {init ? <Login isLoggedIn={isLoggedIn} userObj={userObj}/> : <Nickname isLoggedIn={isLoggedIn} userObj={userObj}/> }
+    </>*/
