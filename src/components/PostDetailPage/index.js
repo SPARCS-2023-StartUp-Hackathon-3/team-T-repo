@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { dbService } from "../../fbase";
 import styled from "styled-components";
 
-
 export default function PostDetailPage() {
   let navigate = useNavigate();
   const { postId } = useParams();

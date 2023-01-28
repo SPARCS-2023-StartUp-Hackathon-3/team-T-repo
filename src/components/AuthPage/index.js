@@ -27,19 +27,19 @@ export default function AuthPage() {
     const doc = await userRef.get();
     if (!doc.exists) {  //첫 로그인이라면
       console.log('No such document!');
-      navigate("/auth/nickname",{
+      navigate("/auth/nickname", {
         replace: false,
-        state: {userObj: userObj}
+        state: { userObj: userObj }
       })
     } else {  //아니라면
       console.log('Document data:', doc.data());
-      navigate("/",{
+      navigate("/", {
         replace: false,
-        state: {userObj: userObj}
+        state: { userObj: userObj }
       })
     }
 
-    
+
   };
 
   return (
@@ -52,33 +52,4 @@ export default function AuthPage() {
       </div>
     </div>
   );
-
-
-
-
-  /*
-  const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userObj, setUserObj] = useState(null);
-  useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-        setUserObj(user);
-        //console.log(userObj)
-      } else {
-        setIsLoggedIn(false);
-      }
-      setInit(true);
-    });
-  }, []);
-  return (
-   
-<Login isLoggedIn={isLoggedIn} userObj={userObj}/>
-  );
-  */
 }
-/*
- <>
-    {init ? <Login isLoggedIn={isLoggedIn} userObj={userObj}/> : <Nickname isLoggedIn={isLoggedIn} userObj={userObj}/> }
-    </>*/
