@@ -33,6 +33,7 @@ export default function Header({ isLoggedIn, userObj }) {
 
 
   return (
+
     <St.Header>
       <St.Menubar>
         <IcMenuIcon />
@@ -43,5 +44,6 @@ export default function Header({ isLoggedIn, userObj }) {
       <St.FeatureContainer>{featureItemLists}</St.FeatureContainer>
 
     </St.Header>
+
   );
 }
