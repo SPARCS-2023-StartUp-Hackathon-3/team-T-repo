@@ -9,22 +9,17 @@ export const St = {
     margin: 3.3rem 4rem;
   `,
 
-  Menubar: styled.div`
-    margin-right: 28rem;
-  `,
+  Menubar: styled.div``,
 
   Link: styled(Link)`
-    margin-right: 71.7rem;
+    margin-left: 13rem;
   `,
 
   FeatureContainer: styled.ul`
     list-style: none;
 
     display: flex;
-    margin: 0;
-
-    position: fixed;
-    right: 4rem;
+    margin: auto 4rem auto auto;
 
     gap: 2.7rem;
     align-items: center;
