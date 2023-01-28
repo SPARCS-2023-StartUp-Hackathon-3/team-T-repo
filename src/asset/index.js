@@ -30,3 +30,9 @@ export { default as upload_button } from "./artupload.png";
 export { default as made_button } from "./madebutton.png";
 export { default as made_ex } from "./madeex.png";
 
+
+export { default as nickname} from "./Nickname.png";
+export { default as nickname_ctn} from "./nickname_ctn.png";
+export { default as nickname_intro} from "./nickname_intro.png";
+export { default as nickbtn} from "./nickbtn.png";
+
