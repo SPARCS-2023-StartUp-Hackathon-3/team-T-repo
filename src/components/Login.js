@@ -115,7 +115,7 @@ const Login = ({ isLoggedIn }) => {
     //event.preventDefault();
     console.log("hi")
 
-    navigate("/auth/nickname",
+    navigate("/login/nickname",
       {
         replace: false,
         state: { uid: userObj.uid }

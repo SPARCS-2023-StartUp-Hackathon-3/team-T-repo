@@ -22,7 +22,7 @@ export { default as best_image } from "./BestImage.png";
 export { default as footer_banner } from "./FooterBanner.png";
 
 export { default as LogInBackground } from "./LogInBackground.png";
-export { default as IcGoogleButton } from "./GoogleButton.svg";
+export { default as IcGoogleButton } from "./GoogleIcon.png";
 
 export { default as UploadImage } from "./UploadImage.png";
 export { default as Bar } from "./bar.png";

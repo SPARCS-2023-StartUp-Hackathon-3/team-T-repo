@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { dbService } from "../../fbase";
+import { authService, dbService } from "../../fbase";
 
 export default function NicknamePage() {
   const navigate = useNavigate();
@@ -17,11 +17,21 @@ export default function NicknamePage() {
   };
 
   const onSubmit =  () => {
-    dbService.doc(`user/${userId}`).set({
-      nickname: nickname,
-      uid: userId,
-      data: Date.now(),
-    });
+    if(location.state.userObj.email){
+      dbService.doc(`user/${userId}`).set({
+        nickname: nickname,
+        uid: userId,
+        data: Date.now(),
+      });
+    }
+    else{
+      dbService.doc(`user/${userId}`).set({
+        nickname: nickname,
+        uid: userId,
+        data: Date.now(),
+      });
+    }
+    
 
     const userObj = {
       uid: userId,
