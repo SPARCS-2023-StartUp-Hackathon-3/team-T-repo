@@ -6,7 +6,7 @@ import { St } from "./style"
 import Header from "../common/Header"
 
 
-export default function PostUploadPage() {
+export default function PostUploadPage({userObj, isLoggedIn}) {
   //입력받을 내용
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -117,7 +117,7 @@ export default function PostUploadPage() {
             <St.bartext3>AI Novels</St.bartext3>
             </St.barbox>
         </St.Bar>
-      {isLoggedIn ? <St.UploadContainer>
+      {isLoggedIn ?( <St.UploadContainer>
 
         <St.FileUpload>
           {attachment ? (
@@ -236,4 +236,6 @@ export default function PostUploadPage() {
                     <a href="/auth">로그인하러 가기</a>
                 </>)}
     </>
-  )
+
+  );
+    }
