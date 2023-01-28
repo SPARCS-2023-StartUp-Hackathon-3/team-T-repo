@@ -36,7 +36,7 @@ export default function PostUploadPage({ isLoggedIn, userObj }) {
 
         let attachmentUrl = "";
         if (attachment != "") {
-            const attachmentRef = storageService.ref().child(`${category}/${dateString}/${"id"}/${uuidv4()}`);
+            const attachmentRef = storageService.ref().child(`${category}/${dateString}/${doc.data().nickname}/${uuidv4()}`);
             const response = await attachmentRef.putString(attachment, "data_url");
             attachmentUrl = await response.ref.getDownloadURL();
         }
