@@ -22,25 +22,25 @@ export default function AuthPage() {
 
     const userObj = {
       uid: data.user.uid,
-    }
+    };
 
-    const userRef = dbService.collection('user').doc(`${data.user.uid}`);
+    const userRef = dbService.collection("user").doc(`${data.user.uid}`);
     const doc = await userRef.get();
-    if (!doc.exists) {  //첫 로그인이라면
-      console.log('No such document!');
+    if (!doc.exists) {
+      //첫 로그인이라면
+      console.log("No such document!");
       navigate("/auth/nickname", {
         replace: false,
-        state: { userObj: userObj }
-      })
-    } else {  //아니라면
-      console.log('Document data:', doc.data());
+        state: { userObj: userObj },
+      });
+    } else {
+      //아니라면
+      console.log("Document data:", doc.data());
       navigate("/", {
         replace: false,
-        state: { userObj: userObj }
-      })
+        state: { userObj: userObj },
+      });
     }
-
-
   };
 
   return (
