@@ -25,6 +25,7 @@ export default function Header() {
   ));
 
   return (
+
     <St.Header>
       <St.Menubar>
         <IcMenuIcon />
@@ -34,5 +35,6 @@ export default function Header() {
       </St.Link>
       <St.FeatureContainer>{featureItemLists}</St.FeatureContainer>
     </St.Header>
+
   );
 }

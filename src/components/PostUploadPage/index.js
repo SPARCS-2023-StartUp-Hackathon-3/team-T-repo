@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { dbService, storageService } from "../../fbase";
 import { v4 as uuidv4 } from "uuid";
+import { St } from "./style"
+import Header from "../common/Header"
 
 export default function PostUploadPage() {
   //입력받을 내용
@@ -101,46 +103,71 @@ export default function PostUploadPage() {
   const onClearAttachment = () => setAttachment(null);
 
   return(
-      <form className="post-upload">
-          파일 업로드:
-          <input 
+    <>
+        <Header />
+        <St.Bar >
+            <St.barbox>
+            <St.bartext1>AI Arts</St.bartext1>
+            <St.bartext2>AI Comics</St.bartext2>
+            <St.bartext3>AI Novels</St.bartext3>
+            </St.barbox>
+        </St.Bar>
+      <St.UploadContainer>
+
+        <St.FileUpload>
+          {attachment ? (
+              <div>
+                <St.Img>
+                  <img src={attachment} height="225px"/>
+                  </St.Img>
+                  <button onClick={onClearAttachment}>Clear</button>
+              </div>
+          ):(
+            <St.FileButton
               id="attachment"
-              className="attachment"
               type="file"
               accept="image/*"
               onChange={onFileChange}
-          />
+          >
+            </St.FileButton>
+          )
+          }
+          
           <br></br>
-          {attachment &&(
-              <div className="attachment">
-                  <img src={attachment} width="50px" height="50px" />
-                  <button onClick={onClearAttachment}>Clear</button>
-              </div>
-          )}
-          제목:
-          <input 
-              id="title"  
-              className="title" 
-              value={title}
-              onChange={onChange}
-              type="text" 
-              placeholder="제목을 입력해주세요" 
-              required
-          />
-          <br></br>
-          내용:
-          <input 
+        </St.FileUpload>
+        
+        <St.InputContainer>
+        <St.InputTitle>
+          제목
+          </St.InputTitle>
+
+          <St.Inputbox 
+          id="title"  
+          className="title" 
+          value={title}
+          onChange={onChange}
+          type="text" 
+          placeholder="Title" 
+          required />
+          <St.InputTitle>
+          내용
+          </St.InputTitle>
+
+          <St.Inputbox 
               id="content"  
               className="content" 
               value={content}
               onChange={onChange}
               type="textarea" 
-              placeholder="내용을 입력해주세요" 
+              placeholder="작품에 대한 부연 설명" 
               required
           />
-          <br></br>
-          카테고리:
-          <select
+
+          <St.InputTitle>
+          주제
+          </St.InputTitle>
+
+          <St.selectbox
               id="category"  
               className="category"
               onChange={onChange}
@@ -154,46 +181,51 @@ export default function PostUploadPage() {
               <option name="landscape" value="landscape">풍경</option>
               <option name="painting" value="painting">수채화</option>
               <option name="gameArt" value="gameArt">게임 아트</option>
-          </select>
-          <br></br>
-          AI모델:
-          <input 
+          </St.selectbox>
+
+          <St.InputTitle>AI모델</St.InputTitle>
+
+          <St.Inputbox 
               id="aiModel"  
               className="aiModel" 
               value={aiModel}
               onChange={onChange}
               type="text" 
-              placeholder="내용을 입력해주세요" 
+              placeholder="ex. DALL·E 2" 
               required
           />
-          <br></br>
-          입력어:
-          <input 
+
+          <St.InputTitle>
+          Prompt
+          </St.InputTitle>
+
+          <St.Inputbox 
               id="prompt"  
               className="prompt" 
               value={prompt}
               onChange={onChange}
               type="text" 
-              placeholder="내용을 입력해주세요" 
+              placeholder="smile, wonderful winter garden, majestic" 
               required
           />
-          <br></br>
-          부정입력어:
-          <input 
+          <St.InputTitle>
+          Navigate_prompt
+          </St.InputTitle>
+
+          <St.Inputbox 
               id="nonPrompt"  
               className="nonPrompt" 
               value={nonPrompt}
               onChange={onChange}
               type="text" 
-              placeholder="내용을 입력해주세요" 
+              placeholder="ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face" 
               required
           />
-           <button className="default_Btn_Right2" onClick={onFormSubmit}>
-              제출
-          </button>
-          
+           <St.button_input onClick={onFormSubmit} />
+          </St.InputContainer>
 
 
-      </form>
+    </St.UploadContainer>
+    </>
   )
 }
