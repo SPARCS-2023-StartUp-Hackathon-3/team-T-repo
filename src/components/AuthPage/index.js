@@ -12,7 +12,7 @@ export default function AuthPage() {
       if (user) {
         setIsLoggedIn(true);
         setUserObj(user);
-        console.log(userObj)
+        //console.log(userObj)
       } else {
         setIsLoggedIn(false);
       }
@@ -20,8 +20,11 @@ export default function AuthPage() {
     });
   }, []);
   return (
-    <>
-      {init ? <Login isLoggedIn={isLoggedIn} userObj={userObj}/> : <Nickname isLoggedIn={isLoggedIn} userObj={userObj}/> }
-    </>
+   
+<Login isLoggedIn={isLoggedIn} userObj={userObj}/>
   );
 }
+/*
+ <>
+    {init ? <Login isLoggedIn={isLoggedIn} userObj={userObj}/> : <Nickname isLoggedIn={isLoggedIn} userObj={userObj}/> }
+    </>*/

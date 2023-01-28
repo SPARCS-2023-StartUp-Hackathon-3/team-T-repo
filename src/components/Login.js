@@ -13,24 +13,33 @@ const Login=({ isLoggedIn })=>{
     const [userUid, SetUserUid]=useState("");
     const [userObj, setUserObj] = useState(null);
     const [userObj2, setUserObj2] = useState("");
+
     const navigate = useNavigate();
     useEffect(() => {
         authService.onAuthStateChanged((user) => {
           if (user) {
+           
             setUserObj({
               displayName: user.displayName,
+
               uid: user.uid,
               updateProfile: (args) => user.updateProfile(args),
             });
-
-            
-          } else {
-            console.log("else")
-            setUserObj(null);
           }
-
         });
+        
+        
       }, []);
+      const gotoHome = () => {
+        // event.preventDefault();
+        console.log("hi")
+    
+        navigate("/");
+
+        //const [userObj, setUserObj] = useState(navigateState && navigateState.user)
+        //const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
+        //console.log(userObj)
+      };
       const refreshUser = () => {
         const user = authService.currentUser;
         setUserObj({
@@ -78,16 +87,17 @@ const Login=({ isLoggedIn })=>{
         const data = await authService.signInWithPopup(provider);
         SetUserUid(data.user);
         console.log(data.user);
+
         const userObj2 = {
             uid: data.user.uid,
-
         }
-        console.log(data.user)
+        console.log(userObj2.uid)
+        setUserObj2(data.user.uid)
        //await dbService.collection("users").add(userObj2);
-       await dbService.doc(`user/${userObj2.uid}`).set({
-        displayName: userObj.displayName,
-        uid: userObj.uid,
-      });
+       /*await dbService.doc(`user/${userObj2.uid}`).update({
+
+        uid: userObj2.uid,
+      });*/
       checkUser();
        //await dbService.doc(`users/${userObj2.uid}`).add(userObj2);
       /* await dbService.collection("user").update({
@@ -106,40 +116,16 @@ const Login=({ isLoggedIn })=>{
         setNewDisplayName(value);
       };
     }*/
-      const checkUser = async (event) => {
+      const checkUser =  () => {
         //event.preventDefault();
         console.log("hi")
-        navigate("/auth/nickname");
-        //dbService.doc(`user/${userObj.uid}`).get(userObj);
-        /*
-        if (userObj.displayName !== newDisplayName) {
-          const IDcheck = await dbService
-            .collection("user")
-            .where("uid", "==", newDisplayName)
-            .get();
-          if (IDcheck.docs.length == 0 && newDisplayName.length > 0) {
-            //user에 업로드
-        await dbService.doc(`user/${userObj.uid}`).set({
-          displayName: userObj.displayName,
-          uid: userObj.uid,
-        });
-            await userObj.updateProfile({
-              displayName: newDisplayName,
-            });
-            refreshUser();
-            await dbService.doc(`user/${userObj.uid}`).update({
-              displayName: newDisplayName,
-            });
-            alert("닉네임 생성완료!");
-          }
-          else{
-            if (newDisplayName.length != 0)
-            alert("중복된 닉네임입니다.");
-          }
-        }
-        else {
-            alert("같은 닉네임입니다.");
-        }*/
+       
+        navigate("/auth/nickname",
+        {
+          replace: false,
+          state:{uid : userObj.uid}}
+        );
+        console.log(userObj)
     }
 
       
