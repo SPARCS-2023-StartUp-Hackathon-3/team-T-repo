@@ -14,3 +14,5 @@ export { default as UploadImage } from "./UploadImage.png";
 export { default as Bar } from "./bar.png";
 export { default as upload_button } from "./artupload.png";
 
+export { default as made_button } from "./madebutton.png";
+export { default as made_ex } from "./madeex.png";
