@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { authService } from "../../fbase";
+import styled from "styled-components";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -40,36 +41,69 @@ const AuthForm = () => {
   
   return (
     <>
-      <form onSubmit={onSubmit} className="container">
-        <input
+      <AuthStyle.form2 onSubmit={onSubmit}>
+        
+        <AuthStyle.TextInput
           name="email"
           type="email"
-          placeholder="Email"
+          placeholder=" ID"
           required
           value={email}
           onChange={onChange}
-          className="authInput"
-        />
-        <input
+          className="authInput" />
+
+        <AuthStyle.TextInput
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder=" PW"
           required
           value={password}
           onChange={onChange}
           className="authInput"
         />
-        <input
+        <AuthStyle.SubmitButton
           type="submit"
-          value={newAccount ? "Create Account" : "Sign In"}
+          value={newAccount ? ("Create Account") : ("Sign In")}
           className="authInput"
         />
         {error && <span className="authError">{error}</span>}
-      </form>
       <span onClick={toggleAccount} className="authSwitch">
         {newAccount ? "Sign In" : "Create Account"}
       </span>
+      </AuthStyle.form2>
     </>
   );
 };
+
+const AuthStyle = {
+  form2:styled.form`
+    margin: 16rem auto 0 0;
+      display: low;
+  `,
+  TextInput: styled.input`
+  width: 25%;
+  height: 3rem;
+  margin: 1rem auto 0 71%;
+  display: table;
+  flex-direction: column;
+  align-items: left;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-wrap: wrap;
+  border: 0;
+  border-radius: 10px;
+  `,
+
+  SubmitButton: styled.input`
+    width: 25%;
+    height: 2rem;
+    margin: 1rem auto 0 71%;
+    display: table;
+    flex-direction: column;
+    border: 0;
+    background-color: #ffffff;
+    align-items: center;
+  `
+}
+
 export default AuthForm;

@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { authService, dbService, firebaseInstance } from "../../fbase";
 import AuthForm from "./AuthForm";
 import styled from "styled-components";
+import  { IcLogoIcon } from "../../asset";
+import Background from "../../asset/LogInBackground.png";
+import { IcGoogleButton } from "../../asset";
 
 export default function AuthPage() {
   let navigate = useNavigate();
@@ -45,17 +48,20 @@ export default function AuthPage() {
 
   return (
       <div className="authContainer">
-
-        <St.Authority>
-          <div>
-            <AuthForm />
-          </div>
-        </St.Authority>
-        <St.GoogleLoginForm>
-          <button onClick={onSocialClick} name="google" className="authBtn">
-            Continue with Google
-          </button>
-        </St.GoogleLoginForm>
+        <St.Background>
+            <div>
+            </div>
+        </St.Background>
+        <St.TeamLogo>
+          <IcLogoIcon />
+        </St.TeamLogo>
+          <AuthForm />
+        <St.GoogleLoginButton
+          type="button"
+          onClick={onSocialClick}
+          name="google"
+          className="authBtn" >
+          </St.GoogleLoginButton>
       </div>
   );
 }
@@ -63,30 +69,52 @@ export default function AuthPage() {
 
 const St = {
 
-  Authority: styled.div`
+
+  Background: styled.div`
+  position: absolute;
+  width: 70%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-image: url(${Background});
+  `,
+
+  TeamLogo: styled.div`
+  position: absolute;
+  width: 25%;
+  height: 3rem;
+  left: 71%;
+  top: 10rem;
+  background-size: 100%;
+  align-items: right;
+  `,
+
+  Authority: styled.input`
   width: 20rem;
-  height: 10rem;
-  margin: 10% auto 0 70%;
-  background-color: white;
+  height: 2rem;
+  margin: 15rem auto 0 71%;
   display: table;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   `,
 
-  GoogleLoginForm: styled.button`
-  width: 20rem;
-  height: 10rem;
-  margin: 10% 70% 0 70%;
+  GoogleLoginButton: styled.input`
+  width: 25%;
+  height: 2rem;
+  margin: 2rem auto 0 71%;
   background-color: white;
   display: table;
   flex-direction: column;
   align-items: center;
-  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
+  vertical-align: middle;
+  border: 0;
+  background-image: url(${IcGoogleButton});
+  background-size: 100%;
   `
-
 }

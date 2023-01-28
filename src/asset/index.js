@@ -6,3 +6,5 @@ export { ReactComponent as IcLogoIcon } from "./LogoIcon.svg";
 export { ReactComponent as IcLogoutIcon } from "./LogoutIcon.svg";
 export { ReactComponent as IcMenuIcon } from "./MenuIcon.svg";
 export { ReactComponent as IcUploadBtnIcon } from "./UploadBtnIcon.svg";
+export { default as LogInBackground } from "./LogInBackground.png";
+export { default as IcGoogleButton } from "./GoogleButton.svg";
