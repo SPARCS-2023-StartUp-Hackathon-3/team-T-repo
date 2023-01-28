@@ -1,0 +1,10 @@
+export { default as MainPage } from "./MainPage";
+export { default as AuthPage } from "./AuthPage";
+export { default as ArtPage } from "./ArtPage";
+export { default as CategoryPage } from "./CategoryPage";
+export { default as PostPage } from "./PostPage";
+export { default as ProfilePage } from "./ProfilePage";
+export { default as CreatePage } from "./CreatePage";
+export { default as PostUploadPage } from "./PostUploadPage";
+export { default as PostDetailPage } from "./PostDetailPage";
+export { default as NicknamePage } from "./NicknamePage";

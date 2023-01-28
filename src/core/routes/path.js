@@ -1,0 +1,17 @@
+export const routePaths = {
+  Main: "/",
+  Art: "/art",
+  Auth: "/auth",
+  Nickname: "/nickname",
+  Profile: "/profile",
+  Category: "/category",
+  CategoryId: "/:categoryId",
+  Create: "/create",
+  Post: "/post",
+  PostId: "/:postId",
+  Post_Detail: "/detail",
+  Post_Upload: "/upload",
+  Post_Edit: "/edit",
+  Post_Delete: "/delete",
+  MyPage: "/my-page",
+};
