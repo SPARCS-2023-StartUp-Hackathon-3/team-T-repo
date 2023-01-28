@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { St } from "./style"
 import Header from "../common/Header"
 
+
 export default function PostUploadPage() {
   //입력받을 내용
   const [title, setTitle] = useState("");
@@ -29,7 +30,10 @@ export default function PostUploadPage() {
   //제출
   const onFormSubmit = async (event) => {
       event.preventDefault();
-      navigate("/");
+      navigate(`/art/category/${category}`);
+
+      const userRef = dbService.collection("user").doc(`${userObj.uid}`);
+      const doc = await userRef.get();
 
       let attachmentUrl = "";
       if(attachment != ""){
@@ -48,6 +52,7 @@ export default function PostUploadPage() {
           prompt: prompt,
           nonPrompt: nonPrompt,
           datetime: Date.now(),
+          nickname: doc.data().nickname,
       }
   
       await dbService.collection("posts").add(postObj);
@@ -112,7 +117,7 @@ export default function PostUploadPage() {
             <St.bartext3>AI Novels</St.bartext3>
             </St.barbox>
         </St.Bar>
-      <St.UploadContainer>
+      {isLoggedIn ? <St.UploadContainer>
 
         <St.FileUpload>
           {attachment ? (
@@ -225,7 +230,10 @@ export default function PostUploadPage() {
           </St.InputContainer>
 
 
-    </St.UploadContainer>
+    </St.UploadContainer> ) : (
+     <>
+                    <p>로그인해야 이용가능합니다</p>
+                    <a href="/auth">로그인하러 가기</a>
+                </>)}
     </>
   )
-}

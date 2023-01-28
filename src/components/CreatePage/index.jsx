@@ -10,7 +10,8 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export default function CreatePage() {
+export default function CreatePage({isLoggedIn, userObj}) {
+  console.log(isLoggedIn, userObj)
   const [userPrompt, setUserPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const imageRef = useRef("");
