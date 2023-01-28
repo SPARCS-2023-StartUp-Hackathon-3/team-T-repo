@@ -58,18 +58,7 @@ FileUpload :styled.div `
         flex-wrap: wrap;
         flex-direction: row;
     `,
-    FileButton:styled.input `
-    
-    align-items: center;
-    ::file-selector-button {
 
-        background-image:url(${UploadImage});
-        background-size:cover;
-        width: 65rem;
-        height: 15rem;
-    }
-
-`,
     Img:styled.div `
     align-items: center;
         display: flex;
@@ -121,5 +110,17 @@ FileUpload :styled.div `
         align-items: center;
         border:none;
      `,
+     FileButton:styled.input `
+    
+    align-items: center;
+    ::file-selector-button {
+
+        background-image:url(${UploadImage});
+        background-size:cover;
+        width: 65rem;
+        height: 15rem;
+    }
+
+`,
     
 }
