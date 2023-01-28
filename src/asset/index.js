@@ -15,7 +15,7 @@ export { default as category_button4 } from "./CategoryButton4.png";
 export { default as category_button5 } from "./CategoryButton5.png";
 export { default as category_button6 } from "./CategoryButton6.png";
 export { default as category_button7 } from "./CategoryButton7.png";
-
+export { default as category_banner } from "./CategoryBanner.png";
 
 
 
