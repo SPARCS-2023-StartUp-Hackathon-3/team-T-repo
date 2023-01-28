@@ -108,6 +108,10 @@ export default function PostUploadPage({userObj,isLoggedIn}) {
   }
   const onClearAttachment = () => setAttachment(null);
 
+  const alertlog = () => {
+    alert('로그인해야 이용가능합니다.');
+    window.location.href="/auth";
+  }
   return(
     <>
         <Header />
@@ -235,8 +239,8 @@ export default function PostUploadPage({userObj,isLoggedIn}) {
 
     </St.UploadContainer> ) : (
      <>
-                    <p>로그인해야 이용가능합니다</p>
-                    <a href="/auth">로그인하러 가기</a>
+        {alertlog()}
+
                 </>)}
     </>
 
