@@ -28,6 +28,10 @@ export default function Router({isLoggedIn, userObj}) {
           element={<CategoryPage />}
         />
         <Route
+          path={`${routePaths.Art}${routePaths.Category}${routePaths.CategoryId}`}
+          element={<CategoryPage />}
+        />
+        <Route
           path={`${routePaths.Art}${routePaths.Create}`}
           element={<CreatePage />}
         />
