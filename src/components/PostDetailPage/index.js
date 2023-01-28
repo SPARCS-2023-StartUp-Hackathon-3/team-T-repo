@@ -65,8 +65,8 @@ export default function PostDetailPage() {
 
 const St = {
   PostContainer: styled.div`
-  width: 65rem;
-  height: 51.87rem;
+  width: 80rem;
+  height: 59.5625rem;
   margin: 10% auto 10% auto;
   background-color: white;
   display: table;
@@ -79,7 +79,7 @@ const St = {
   ,
   ImageContainer: styled.div`
   width: 42.75rem;
-  height: 51.87rem;
+  height: 59.5625rem;
   background-color: black;
   float:left;
   border: 1px solid blue;
@@ -90,8 +90,8 @@ const St = {
   `
   ,
   Image: styled.div`
-  width: 40.75rem;
-  height: 49.87rem;
+  width: 49.125rem;
+  height: 59.5625rem;
   background-color: white;
   margin: 1rem;
   border: 1px solid black;
@@ -101,8 +101,8 @@ const St = {
   ,
   TextContainer: styled.div`
   display:inline-block;
-  width: 22.25rem;
-  height: 51.87rem;
+  width: 25rem;
+  height: 59.5625rem;
   margin-left: 1.63rem;
   background-color: white;
   float:left;
@@ -118,7 +118,7 @@ const St = {
   `
   ,
   Content: styled.div`
-  width: 16rem;
+  width: 23.625rem;
   height: 10.50rem;
   padding: 1.5rem;
   font-size: 1.5rem;
@@ -153,7 +153,7 @@ const St = {
   `
   ,
   Inside: styled.div`
-  width: 16rem;
+  width: 23.625rem;
   height: 7.95rem;
   padding: 1.0rem;
   font-size: 1.0rem;
