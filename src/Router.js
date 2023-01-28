@@ -15,12 +15,12 @@ import {
   NicknamePage,
 } from "./components";
 
-export default function Router({isLoggedIn, userObj}) {
+export default function Router({isLoggedIn, userObj, refreshUser}) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={routePaths.Main} element={<MainPage />} />
-        <Route path={routePaths.Auth} element={<AuthPage isLoggedIn={isLoggedIn} userObj={userObj}/>} />
+        <Route path={routePaths.Main} element={<MainPage isLoggedIn={isLoggedIn} userObj={userObj} />} />
+        <Route path={routePaths.Auth} element={<AuthPage isLoggedIn={isLoggedIn} userObj={userObj} />} />
         <Route path={routePaths.Profile} element={<ProfilePage />} />
         <Route path={routePaths.Art} element={<ArtPage />} />
         <Route
@@ -38,7 +38,7 @@ export default function Router({isLoggedIn, userObj}) {
         <Route path={routePaths.Post} element={<PostPage />} />
         <Route
           path={`${routePaths.Post}${routePaths.Post_Upload}`}
-          element={<PostUploadPage />}
+          element={<PostUploadPage isLoggedIn={isLoggedIn} userObj={userObj} />}
         />
         <Route
           path={`${routePaths.Post}${routePaths.Post_Detail}${routePaths.PostId}`}
