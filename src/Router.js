@@ -21,8 +21,8 @@ export default function Router({isLoggedIn, userObj, refreshUser}) {
       <Routes>
         <Route path={routePaths.Main} element={<MainPage isLoggedIn={isLoggedIn} userObj={userObj} />} />
         <Route path={routePaths.Auth} element={<AuthPage isLoggedIn={isLoggedIn} userObj={userObj} />} />
-        <Route path={routePaths.Profile} element={<ProfilePage />} />
-        <Route path={routePaths.Art} element={<ArtPage />} />
+        <Route path={routePaths.Profile} element={<ProfilePage isLoggedIn={isLoggedIn} userObj={userObj} />} />
+        <Route path={routePaths.Art} element={<ArtPage isLoggedIn={isLoggedIn} userObj={userObj} />} />
         <Route
           path={`${routePaths.Art}${routePaths.Category}`}
           element={<CategoryPage />}
@@ -33,7 +33,7 @@ export default function Router({isLoggedIn, userObj, refreshUser}) {
         />
         <Route
           path={`${routePaths.Art}${routePaths.Create}`}
-          element={<CreatePage />}
+          element={<CreatePage isLoggedIn={isLoggedIn} userObj={userObj}/>}
         />
         <Route path={routePaths.Post} element={<PostPage />} />
         <Route

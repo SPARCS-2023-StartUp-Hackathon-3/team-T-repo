@@ -4,6 +4,8 @@ import { dbService, storageService } from "../../fbase";
 import { v4 as uuidv4 } from "uuid";
 
 export default function PostUploadPage({ isLoggedIn, userObj }) {
+    console.log("postupload", isLoggedIn, userObj)
+
     //입력받을 내용
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -27,7 +29,10 @@ export default function PostUploadPage({ isLoggedIn, userObj }) {
     //제출
     const onFormSubmit = async (event) => {
         event.preventDefault();
-        navigate("/");
+        navigate(`/art/category/${category}`);
+
+        const userRef = dbService.collection("user").doc(`${userObj.uid}`);
+        const doc = await userRef.get();
 
         let attachmentUrl = "";
         if (attachment != "") {
@@ -46,6 +51,7 @@ export default function PostUploadPage({ isLoggedIn, userObj }) {
             prompt: prompt,
             nonPrompt: nonPrompt,
             datetime: Date.now(),
+            nickname: doc.data().nickname,
         }
 
         await dbService.collection("posts").add(postObj);
@@ -193,11 +199,11 @@ export default function PostUploadPage({ isLoggedIn, userObj }) {
                     제출
                 </button>
             </form>
-            ):(
-            <> 
-            <p>로그인해야 이용가능합니다</p>
-            <a href="/auth">로그인하러 가기</a>
-            </>)}
+            ) : (
+                <>
+                    <p>로그인해야 이용가능합니다</p>
+                    <a href="/auth">로그인하러 가기</a>
+                </>)}
         </>
     )
 }
