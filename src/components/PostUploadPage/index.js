@@ -110,7 +110,7 @@ export default function PostUploadPage({userObj,isLoggedIn}) {
 
   const alertlog = () => {
     alert('로그인해야 이용가능합니다.');
-    window.location.href="/auth";
+    window.location.href="/login";
   }
   return(
     <>

@@ -1,7 +1,7 @@
 export const routePaths = {
   Main: "/",
   Art: "/art",
-  Auth: "/auth",
+  Auth: "/login",
   Nickname: "/nickname",
   Profile: "/profile",
   Category: "/category",
