@@ -7,3 +7,4 @@ export { default as ProfilePage } from "./ProfilePage";
 export { default as CreatePage } from "./CreatePage";
 export { default as PostUploadPage } from "./PostUploadPage";
 export { default as PostDetailPage } from "./PostDetailPage";
+export { default as NicknamePage } from "./NicknamePage";

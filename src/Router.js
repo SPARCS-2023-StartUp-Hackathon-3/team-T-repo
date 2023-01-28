@@ -12,18 +12,23 @@ import {
   CreatePage,
   PostUploadPage,
   PostDetailPage,
+  NicknamePage,
 } from "./components";
 
-export default function Router() {
+export default function Router({isLoggedIn, userObj}) {
   return (
     <BrowserRouter>
       <Routes>
         <Route path={routePaths.Main} element={<MainPage />} />
-        <Route path={routePaths.Auth} element={<AuthPage />} />
+        <Route path={routePaths.Auth} element={<AuthPage isLoggedIn={isLoggedIn} userObj={userObj}/>} />
         <Route path={routePaths.Profile} element={<ProfilePage />} />
         <Route path={routePaths.Art} element={<ArtPage />} />
         <Route
           path={`${routePaths.Art}${routePaths.Category}`}
+          element={<CategoryPage />}
+        />
+        <Route
+          path={`${routePaths.Art}${routePaths.Category}${routePaths.CategoryId}`}
           element={<CategoryPage />}
         />
         <Route
@@ -38,6 +43,10 @@ export default function Router() {
         <Route
           path={`${routePaths.Post}${routePaths.Post_Detail}${routePaths.PostId}`}
           element={<PostDetailPage />}
+        />
+        <Route
+          path={`${routePaths.Auth}${routePaths.Nickname}`}
+          element={<NicknamePage />}
         />
       </Routes>
     </BrowserRouter>
