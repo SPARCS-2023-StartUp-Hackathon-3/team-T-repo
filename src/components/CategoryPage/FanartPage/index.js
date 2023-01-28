@@ -2,16 +2,7 @@ import React, { useEffect, useState } from "react";
 import { dbService } from "../../../fbase";
 import styled from "styled-components";
 import Item from "../item";
-
-const PostListWrapper = styled.div`
-  margin-top: 7px;
-  display: grid;
-  place-items: center;
-  justify-content: space-evenly;
-  /* font-size: small; */
-  /* row-gap: 3px; */
-  grid-template-columns: repeat(2, auto);
-`;
+import { St } from "./style";
 
 export default function FanartPage() {
     const [postlists, setPostlists] = useState([]);
@@ -29,8 +20,9 @@ export default function FanartPage() {
 
     return (
         <>
-            <div>FanartPage</div>
-            <PostListWrapper>
+            <St.TopContainer></St.TopContainer>
+            <St.TopicContainer>작품</St.TopicContainer>
+            <St.PostContainer>
                 {postlists.map((list) => (
                     <Item
                         key={list.id}
@@ -38,7 +30,7 @@ export default function FanartPage() {
                         {...list}
                     />
                 ))}
-            </PostListWrapper>
+            </St.PostContainer>
 
         </>
     )

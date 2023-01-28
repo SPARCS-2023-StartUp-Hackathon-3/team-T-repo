@@ -5,10 +5,11 @@ import Banner from "./Banner";
 import LandingBtn from "./LandingBtn";
 import MainPost from "./MainPost";
 
-export default function MainPage() {
+export default function MainPage({ isLoggedIn, userObj }) {
+  console.log("mainpage", isLoggedIn, userObj);
   return (
     <St.MainPage>
-      <MainHeader />
+      <MainHeader isLoggedIn={isLoggedIn} userObj={userObj} />
       <Banner />
       <St.ContentContainer>
         <LandingBtn />
@@ -17,3 +18,5 @@ export default function MainPage() {
     </St.MainPage>
   );
 }
+
+// <Header isLoggedIn={isLoggedIn} userObj={userObj} />

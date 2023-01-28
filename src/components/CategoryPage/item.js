@@ -1,73 +1,64 @@
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { St } from "./style";
 
 const Item = ({ listObj }) => {
 
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
-    const onClickDetail = () => {
-        
-        navigate(`/post/detail/${listObj.id}`, {
-            replace: false,
-            state: { detailObj: listObj },
-        });
-        /*
-        if (userObj != null) {
-          navigate(`/selling/detail/${listObj.id}`, {
-            replace: false,
-            state: { detailObj: listObj },
-          });
-        } else {
-          Swal.fire({
-            icon: "warning",
-            showCancelButton: true,
-            cancelButtonText: "취소",
-            confirmButtonText: "로그인",
-            confirmButtonColor: "#1f54c0",
-            text: "로그인후 이용 가능합니다. 로그인하시겠습니까?",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              navigate("/auth");
-            }
-          });
-        }
-        */
-      };
+  const onClickDetail = () => {
+    navigate(`/post/detail/${listObj.id}`, {
+      replace: false,
+      state: { detailObj: listObj },
+    });
+  };
 
-    return (
-        <div
-            style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justify: "center",
-            }}
-        >
+  return (
+    <St2.ItemContainer onClick={onClickDetail}>
+      {listObj.attachmentUrl ? (
+        <img
+          style={{
+            width: "90%",
+            aspectRatio: "1/1",
+            backgroundColor: "white",
 
-            <div onClick={onClickDetail}>
-                {listObj.attachmentUrl ? (
-                    <img
-                        style={{
-                            // paddingBottom:"0%",
-                            width: "100%",
-                            // height: "!important",
-                            // marginBottom: 5,
-                            borderRadius: 10,
-                            aspectRatio: "1/1",
-                            backgroundColor: "white",
-                        }}
-                        alt="썸네일"
-                        src={listObj.attachmentUrl}
-                    />) : (<></>)}
-                <div>
-                    <p>제목: {listObj.title}</p>
-                    <p>내용: {listObj.content}</p>
-                </div>
-            </div>
+          }}
+          alt="썸네일"
+          src={listObj.attachmentUrl}
+        />) : (<></>)}
+      <St2.TextContainer>
+        {listObj.title}
+      </St2.TextContainer>
 
-        </div>
-    )
+      <St2.TextContainer2>
+        {listObj.nickname}
+      </St2.TextContainer2>
 
+    </St2.ItemContainer>
+  )
+
+}
+
+const St2 = {
+  ItemContainer: styled.div`
+  width: 20rem;
+  height: 23rem;
+  margin: 0 0 0 0;
+  text-align: center;
+  `
+  ,
+  TextContainer: styled.div`
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-left: 1rem;
+  text-align: left;
+  `
+  ,
+  TextContainer2: styled.div`
+  font-size: 1.5rem;
+  text-align: left;
+  margin-left: 1rem;
+  `
 }
 
 export default Item;

@@ -1,8 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 import React, { useState, useRef } from "react";
-//import { saveAs } from "file-saver";
-//import domtoimage from "dom-to-image";
-//import { exportComponentAsPNG } from "react-component-export-image";
+import { St } from "./style"
+import Header from "../common/Header"
 
 const configuration = new Configuration({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
@@ -10,7 +9,8 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export default function CreatePage() {
+export default function CreatePage({isLoggedIn, userObj}) {
+  console.log(isLoggedIn, userObj)
   const [userPrompt, setUserPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const imageRef = useRef("");
@@ -36,44 +36,24 @@ export default function CreatePage() {
     }
   };
 
-  // blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-  // const onDownloadBtn = () => {
-  //   const download = imageRef.current;
-  //   domtoimage.toBlob(download).then((blob) => {
-  //     saveAs(blob, "card.png");
-  //   });
-  // };
-
-  // 새창에 열림
-  // const downloadImage = () => {
-  //   console.log(imageUrl);
-  //   saveAs(imageUrl, `download.png`);
-  // };
-
-  // 이또한 cors error
-  // const ComponentToPrint = React.forwardRef((props, ref) => (
-  //   <div ref={ref}>{imageUrl && <img src={imageUrl} alt="ai_image" />}</div>
-  // ));
-  //     <ComponentToPrint ref={imageRef} />;
 
   return (
-    <section>
-      {imageUrl && <img src={imageUrl} alt="ai_image" />}
-      <input onChange={(e) => setUserPrompt(e.target.value)} />
-      <button onClick={() => generateImage()}>Ganerate</button>
-      <button>Download</button>
-    </section>
+    <>
+    <Header />
+    <St.Container>
+      <St.maintext>
+        당신의 창의력을 마음껏 발휘해보세요! 
+      </St.maintext>
+      <St.Container2>
+        <St.Inputbox onChange={(e) => setUserPrompt(e.target.value)} />
+        <St.button_made onClick={() => generateImage()} />
+      </St.Container2>
+      <St.Container3>
+      {imageUrl? (<img src={imageUrl} alt="ai_image" />) : (<p/>)}
+      </St.Container3>
+      <St.Ex />
+      </St.Container>
+    </>
   );
 }
 
-/*
-      <button onClick={() => exportComponentAsPNG(imageRef)}>Download</button>
-      <a
-        href={imageUrl}
-        download="ai_sample.png"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <button>Download2</button>
-      </a>
-*/
