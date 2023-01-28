@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService, dbService, firebaseInstance } from "../../fbase";
 import AuthForm from "./AuthForm";
+import styled from "styled-components";
 
 export default function AuthPage() {
   let navigate = useNavigate();
@@ -43,13 +44,49 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="authContainer">
-      <AuthForm />
-      <div className="authBtns">
-        <button onClick={onSocialClick} name="google" className="authBtn">
-          Continue with Google
-        </button>
+      <div className="authContainer">
+
+        <St.Authority>
+          <div>
+            <AuthForm />
+          </div>
+        </St.Authority>
+        <St.GoogleLoginForm>
+          <button onClick={onSocialClick} name="google" className="authBtn">
+            Continue with Google
+          </button>
+        </St.GoogleLoginForm>
       </div>
-    </div>
   );
+}
+
+
+const St = {
+
+  Authority: styled.div`
+  width: 20rem;
+  height: 10rem;
+  margin: 10% auto 0 70%;
+  background-color: white;
+  display: table;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  `,
+
+  GoogleLoginForm: styled.button`
+  width: 20rem;
+  height: 10rem;
+  margin: 10% 70% 0 70%;
+  background-color: white;
+  display: table;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  `
+
 }
