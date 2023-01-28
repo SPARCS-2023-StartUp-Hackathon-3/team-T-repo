@@ -32,7 +32,7 @@ export default function AuthPage() {
     if (!doc.exists) {
       //첫 로그인이라면
       console.log("No such document!");
-      navigate("/auth/nickname", {
+      navigate("/login/nickname", {
         replace: false,
         state: { userObj: userObj },
       });
