@@ -236,7 +236,7 @@ export default function PostUploadPage({userObj,isLoggedIn}) {
     </St.UploadContainer> ) : (
      <>
                     <p>로그인해야 이용가능합니다</p>
-                    <a href="/auth">로그인하러 가기</a>
+                    <a href="/login">로그인하러 가기</a>
                 </>)}
     </>
 
