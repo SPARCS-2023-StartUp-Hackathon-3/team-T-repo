@@ -1,12 +1,9 @@
 import './App.css';
-
 import styled from "styled-components";
-import react from 'react';
+import { footer_banner } from "../src/asset";
 import Router from "./Router";
-import Login from './components/Login';
 import { useEffect, useState } from 'react';
 import { authService } from './fbase';
-import Header from './components/common/Header';
 
 function App() {
   const [init, setInit] = useState(false);
@@ -39,20 +36,27 @@ function App() {
     })
   }
 
+  //footer onClick
+  const githubUrl = "https://github.com/SPARCS-2023-StartUp-Hackathon-3/team-T-repo/blob/develop/README.md"
+
   return (
+    <>
     <div>
       <Router isLoggedIn={Boolean(userObj)} userObj={userObj} refreshUser={refreshUser} />
+      <FooterContainer onClick={()=>{window.open(githubUrl)}}/>
     </div>
+    
+    </>
   );
 }
 
 export default App;
 
-
-const Load = styled.div`
-  background-color: #1f54c0;
-  height: 100vh;
-  width: 100vw;
-  position:absolute;
+const FooterContainer = styled.div`
+  background-image:url(${footer_banner});
+  background-size:cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 25rem;
 `
 
