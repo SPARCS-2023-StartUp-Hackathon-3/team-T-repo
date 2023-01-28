@@ -25,32 +25,9 @@ const Login=({ isLoggedIn })=>{
               uid: user.uid,
               updateProfile: (args) => user.updateProfile(args),
             });
-            dbService.collection("user")
-            .get().then((docs)=>
-            {docs.forEach((doc) => {
-      
-              if (doc.exists){
-                if  (doc.id === user.uid)   {
-                console.log("113333")
-                gotoHome()
-                }
-                else{
-                  dbService.doc(`user/${user.uid}`).set({
-        
-                    uid: user.uid,
-                  });
-                }
-              }
-              
-            })
-          });
-            
-          } else {
-            console.log("else")
-            setUserObj(null);
           }
-
         });
+        
         
       }, []);
       const gotoHome = () => {
@@ -148,7 +125,7 @@ const Login=({ isLoggedIn })=>{
           replace: false,
           state:{uid : userObj.uid}}
         );
-        console.log(userObj2)
+        console.log(userObj)
     }
 
       

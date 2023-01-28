@@ -4,6 +4,7 @@ import { dbService } from "../../fbase";
 
 export default function NicknamePage() {
   const location = useLocation();
+  console.log('state', location.state)
   const { uid } = location.state;
   console.log(uid)
   const [nickname, setNickname] = useState("");
@@ -20,16 +21,8 @@ export default function NicknamePage() {
         console.log("11")
         if (doc.exists){
           if  (doc.id === uid)   {
-            console.log(doc.data().displayName)
-            if(doc.data().displayName==null){
-              dbService.doc(`user/${uid}`).update({
-                uid: uid,
-                displayName: newDisplayName
-              });
-            }
-            else{
-              gotoHome()
-            }
+            gotoHome();
+            
           }
         }
             /*
@@ -56,7 +49,7 @@ export default function NicknamePage() {
   console.log(nickname)
   //이름 바꾸기
   const onChange = async (event) => {
-    //event.preventDefault();
+    event.preventDefault();
     const {
       target: { value },
     } = event;
@@ -66,10 +59,11 @@ export default function NicknamePage() {
     const onSubmit =  () => {
       //event.preventDefault();
       console.log("name33")
-       dbService.collection("user").doc(uid).update({
+      dbService.doc(`user/${uid}`).set({
         displayName: newDisplayName,
+        uid:uid,
       });
-  
+      gotoHome();
     };
   const gotoHome = () => {
     // event.preventDefault();
