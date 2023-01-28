@@ -19,6 +19,7 @@ export { default as category_banner } from "./CategoryBanner.png";
 export { default as art_main_banner } from "./ArtMainBanner.png"; 
 export { default as today_pick_banner } from "./TodayPickBanner.png";
 export { default as best_image } from "./BestImage.png";
+export { default as footer_banner } from "./FooterBanner.png";
 
 export { default as LogInBackground } from "./LogInBackground.png";
 export { default as IcGoogleButton } from "./GoogleButton.svg";
