@@ -13,15 +13,15 @@ export default function AuthPage() {
   const [userUid, SetUserUid] = useState("");
 
   const onSocialClick = async (event) => {
+    
     const {
       target: { name },
     } = event;
+
     let provider;
-    if (name === "google") {
-      provider = new firebaseInstance.auth.GoogleAuthProvider();
-    }
+    provider = new firebaseInstance.auth.GoogleAuthProvider();
+    
     const data = await authService.signInWithPopup(provider);
-    setUserData(data);
 
     const userObj = {
       uid: data.user.uid,
@@ -31,14 +31,14 @@ export default function AuthPage() {
     const doc = await userRef.get();
     if (!doc.exists) {
       //첫 로그인이라면
-      console.log("No such document!");
+      //console.log("No such document!");
       navigate("/login/nickname", {
         replace: false,
         state: { userObj: userObj },
       });
     } else {
       //아니라면
-      console.log("Document data:", doc.data());
+      //console.log("Document data:", doc.data());
       navigate("/", {
         replace: false,
         state: { userObj: userObj },
@@ -55,6 +55,7 @@ export default function AuthPage() {
             <St.GoogleLoginButton
               onClick={onSocialClick}
               name="google"
+              className="authBtn"
             />
       </St.AuthContainer>
     </St.mainContainer>
