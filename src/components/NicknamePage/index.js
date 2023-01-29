@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { dbService } from "../../fbase";
-import { St } from "./style"
+import { St } from "./style";
 
 export default function NicknamePage() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function NicknamePage() {
     setNickName(value);
   };
 
-  const onSubmit =  () => {
+  const onSubmit = () => {
     dbService.doc(`user/${userId}`).set({
       nickname: nickname,
       uid: userId,
@@ -26,12 +26,12 @@ export default function NicknamePage() {
 
     const userObj = {
       uid: userId,
-    }
+    };
 
-    navigate("/",{
+    navigate("/", {
       replace: false,
-      state: {userObj: userObj}
-    })
+      state: { userObj: userObj },
+    });
   };
 
   return (
@@ -46,11 +46,12 @@ export default function NicknamePage() {
               autoFocus
               placeholder="별명 입력란"
               value={nickname}
-            /> &nbsp;
+            />{" "}
+            &nbsp;
             <St.nickbtn />
           </St.realN>
         </St.Intro_Container>
       </St.Container>
     </>
-  )
+  );
 }
