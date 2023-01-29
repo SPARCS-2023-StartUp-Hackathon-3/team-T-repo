@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { authService, dbService, firebaseInstance } from "../../fbase";
 import AuthForm from "./AuthForm";
 import styled from "styled-components";
-import  { IcLogoIcon } from "../../asset";
+import { IcLogoIcon } from "../../asset";
 import Background from "../../asset/LogInBackground.png";
 import { IcGoogleButton } from "../../asset";
 
@@ -13,15 +13,15 @@ export default function AuthPage() {
   const [userUid, SetUserUid] = useState("");
 
   const onSocialClick = async (event) => {
+    
     const {
       target: { name },
     } = event;
+
     let provider;
-    if (name === "google") {
-      provider = new firebaseInstance.auth.GoogleAuthProvider();
-    }
+    provider = new firebaseInstance.auth.GoogleAuthProvider();
+    
     const data = await authService.signInWithPopup(provider);
-    setUserData(data);
 
     const userObj = {
       uid: data.user.uid,
@@ -31,14 +31,14 @@ export default function AuthPage() {
     const doc = await userRef.get();
     if (!doc.exists) {
       //첫 로그인이라면
-      console.log("No such document!");
-      navigate("/auth/nickname", {
+      //console.log("No such document!");
+      navigate("/login/nickname", {
         replace: false,
         state: { userObj: userObj },
       });
     } else {
       //아니라면
-      console.log("Document data:", doc.data());
+      //console.log("Document data:", doc.data());
       navigate("/", {
         replace: false,
         state: { userObj: userObj },
@@ -46,75 +46,50 @@ export default function AuthPage() {
     }
   };
 
-  return (
-      <div className="authContainer">
-        <St.Background>
-            <div>
-            </div>
-        </St.Background>
-        <St.TeamLogo>
-          <IcLogoIcon />
-        </St.TeamLogo>
-          <AuthForm />
-        <St.GoogleLoginButton
-          type="button"
-          onClick={onSocialClick}
-          name="google"
-          className="authBtn" >
-          </St.GoogleLoginButton>
-      </div>
+  return (<>
+    <St.mainContainer>
+      <St.Background></St.Background>
+      <St.AuthContainer>
+            <IcLogoIcon width="30rem" height="30rem"/>
+            <AuthForm />
+            <St.GoogleLoginButton
+              onClick={onSocialClick}
+              name="google"
+              className="authBtn"
+            />
+      </St.AuthContainer>
+    </St.mainContainer>
+  </>
   );
 }
 
-
 const St = {
-
-
-  Background: styled.div`
-  position: absolute;
-  width: 70%;
+  mainContainer: styled.div`
+  width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  `,
+  Background: styled.div`
+  background-image: url(${Background});
+  width: 70%;
+  height: 65rem;
   left: 0;
   top: 0;
   background-size: cover;
-  background-image: url(${Background});
   `,
-
-  TeamLogo: styled.div`
-  position: absolute;
-  width: 25%;
-  height: 3rem;
-  left: 71%;
-  top: 10rem;
-  background-size: 100%;
-  align-items: right;
-  `,
-
-  Authority: styled.input`
-  width: 20rem;
-  height: 2rem;
-  margin: 15rem auto 0 71%;
-  display: table;
-  flex-direction: column;
-  align-items: left;
-  border: 1px solid red;
-  display: flex;
-  flex-wrap: wrap;
-  `,
-
-  GoogleLoginButton: styled.input`
-  width: 25%;
-  height: 2rem;
-  margin: 2rem auto 0 71%;
+  AuthContainer: styled.div`
+  width: 30%;
+  height: 65rem;
+  left: 70%;
+  top: 0;
   background-color: white;
-  display: table;
-  flex-direction: column;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  vertical-align: middle;
-  border: 0;
+  margin: 5rem 5rem 5rem 5rem;
+  `,
+  GoogleLoginButton: styled.div`
   background-image: url(${IcGoogleButton});
-  background-size: 100%;
+  background-size: contain;
+  width: 35rem;
+  height: 4.5rem;
   `
 }
