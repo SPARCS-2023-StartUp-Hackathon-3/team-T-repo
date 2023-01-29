@@ -4,6 +4,7 @@ import MainHeader from "./MainHeader";
 import Banner from "./Banner";
 import LandingBtn from "./LandingBtn";
 import MainPost from "./MainPost";
+import Header from "../common/Header";
 
 export default function MainPage({ isLoggedIn, userObj }) {
   console.log("mainpage", isLoggedIn, userObj);

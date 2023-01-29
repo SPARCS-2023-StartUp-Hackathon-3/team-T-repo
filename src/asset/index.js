@@ -33,6 +33,8 @@ export { default as category_button5 } from "./CategoryButton5.png";
 export { default as category_button6 } from "./CategoryButton6.png";
 export { default as category_button7 } from "./CategoryButton7.png";
 export { default as category_banner } from "./CategoryBanner.png";
+export { default as anime_banner } from "./AnimeBanner.png";
+export { default as ddd_banner } from "./3DBanner.png";
 export { default as art_main_banner } from "./ArtMainBanner.png";
 export { default as today_pick_banner } from "./TodayPickBanner.png";
 export { default as best_image } from "./BestImage.png";
