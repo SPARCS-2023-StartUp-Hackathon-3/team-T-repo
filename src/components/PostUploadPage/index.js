@@ -12,7 +12,7 @@ export default function PostUploadPage({userObj,isLoggedIn}) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [attachment, setAttachment] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("anime");
   const [aiModel, setAiModel] = useState("");
   const [prompt, setPrompt] = useState("");
   const [nonPrompt, setNonPrompt] = useState("");
@@ -79,7 +79,7 @@ export default function PostUploadPage({userObj,isLoggedIn}) {
           setContent(value);
       }
       else if(event.target.id === "category"){
-          setCategory(value);
+        setCategory(value);
       }
       else if(event.target.id === "aiModel"){
           setAiModel(value);
@@ -179,21 +179,21 @@ export default function PostUploadPage({userObj,isLoggedIn}) {
           주제
           </St.InputTitle>
 
-          <St.selectbox
+          <select
               id="category"  
               className="category"
               onChange={onChange}
               required
           >
-              <option name="anime" value="anime">만화</option>
+              <option name="anime" value="anime" selected>만화</option>
               <option name="realistic" value="realistic">실사</option>
-              <option name="3D" value="3D">3D</option>
+              <option name="3d" value="3d">3D</option>
               <option name="fantasy" value="fantasy">판타지</option>
               <option name="fanart" value="fanart">팬아트</option>
               <option name="landscape" value="landscape">풍경</option>
               <option name="painting" value="painting">수채화</option>
               <option name="gameArt" value="gameArt">게임 아트</option>
-          </St.selectbox>
+          </select>
 
           <St.InputTitle>AI모델</St.InputTitle>
 
