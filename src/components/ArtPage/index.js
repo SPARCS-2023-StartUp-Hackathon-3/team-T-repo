@@ -2,10 +2,10 @@ import React from "react";
 import Header from "../common/Header";
 import { St } from "./style";
 
-export default function ArtPage() {
+export default function ArtPage({ isLoggedIn, userObj }) {
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} userObj={userObj} />
       <St.TopContainer></St.TopContainer>
       <St.TopicContainer>Topic</St.TopicContainer>
       <St.PostContainer>{/*여기에 추가*/}</St.PostContainer>

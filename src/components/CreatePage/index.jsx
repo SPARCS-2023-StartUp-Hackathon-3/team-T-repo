@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 import React, { useState, useRef } from "react";
-import { St } from "./style"
-import Header from "../common/Header"
+import { St } from "./style";
+import Header from "../common/Header";
 
 const configuration = new Configuration({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
@@ -9,8 +9,8 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export default function CreatePage({isLoggedIn, userObj}) {
-  console.log(isLoggedIn, userObj)
+export default function CreatePage({ isLoggedIn, userObj }) {
+  console.log(isLoggedIn, userObj);
   const [userPrompt, setUserPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const imageRef = useRef("");
@@ -36,24 +36,20 @@ export default function CreatePage({isLoggedIn, userObj}) {
     }
   };
 
-
   return (
     <>
-    <Header />
-    <St.Container>
-      <St.maintext>
-        당신의 창의력을 마음껏 발휘해보세요! 
-      </St.maintext>
-      <St.Container2>
-        <St.Inputbox onChange={(e) => setUserPrompt(e.target.value)} />
-        <St.button_made onClick={() => generateImage()} />
-      </St.Container2>
-      <St.Container3>
-      {imageUrl? (<img src={imageUrl} alt="ai_image" />) : (<p/>)}
-      </St.Container3>
-      <St.Ex />
+      <Header isLoggedIn={isLoggedIn} userObj={userObj} />
+      <St.Container>
+        <St.maintext>당신의 창의력을 마음껏 발휘해보세요!</St.maintext>
+        <St.Container2>
+          <St.Inputbox onChange={(e) => setUserPrompt(e.target.value)} />
+          <St.button_made onClick={() => generateImage()} />
+        </St.Container2>
+        <St.Container3>
+          {imageUrl ? <img src={imageUrl} alt="ai_image" /> : <p />}
+        </St.Container3>
+        <St.Ex />
       </St.Container>
     </>
   );
 }
-
